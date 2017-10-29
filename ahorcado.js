@@ -1,9 +1,11 @@
 // ### VARIABLES ###
 
 // Array de palabras
-var palabras = ["manzana","oceano","ordenador","jardin","plaza","ruedo","petanca","higuera","sauce","relampago","trueno","jirafa","campo","ilustracion","excursion","empanadilla","pastel","colegio","carrera","mermelada"];
+var palabras = [["atlantico", "Un océano"], ["ordenador", "Una máquina"], ["laurel", "Un árbol"], ["plaza", "Espacio público"], ["rueda", "Gran invento"], ["cereza", "Una fruta"], ["petanca", "Un juego"], ["higuera", "Un árbol"], ["everest", "Un monte"], ["relampago", "Antecede al trueno"], ["jirafa", "Un animal"], ["luxemburgo", "Un país"], ["uruguay", "Un país"], ["ilustracion", "Representación gráfica"], ["excursion", "Actividad en la naturaleza"], ["empanadilla", "De la panadería"], ["pastel", "De la pastelería"], ["colegio", "Lugar para estudiar"], ["carrera", "Competición"], ["mermelada", "Confitura"]];
 // Palabra a averiguar
 var palabra = "";
+// Nº aleatorio
+var rand;
 // Palabra oculta
 var oculta = [];
 // Elemento html de la palabra
@@ -20,7 +22,8 @@ var btnInicio = document.getElementById("reset");
 
 // Escoger palabra al azar
 function generaPalabra() {
-  palabra = palabras[(Math.random() * 19).toFixed(0)].toUpperCase();
+  rand = (Math.random() * 19).toFixed(0);
+  palabra = palabras[rand][0].toUpperCase();
   console.log(palabra);
 }
 
@@ -39,38 +42,55 @@ function generaABC (a,z) {
   var letra = "";
   for( ; i<=j; i++) {
     letra = String.fromCharCode(i).toUpperCase();
-    document.getElementById("abcdario").innerHTML += "<button value='" + letra + "' onclick='intento(\"" + letra + "\")' class='letra'>" + letra + "</button>";
+    document.getElementById("abcdario").innerHTML += "<button value='" + letra + "' onclick='intento(\"" + letra + "\")' class='letra' id='"+letra+"'>" + letra + "</button>";
     if(i==110) {
-      document.getElementById("abcdario").innerHTML += "<button value='Ñ' onclick='intento(\"Ñ\")' class='letra'>Ñ</button>";
+      document.getElementById("abcdario").innerHTML += "<button value='Ñ' onclick='intento(\"Ñ\")' class='letra' id='"+letra+"'>Ñ</button>";
     }
   }
 }
 
 // Chequear intento
 function intento(letra) {
+  document.getElementById(letra).disabled = true;
   if(palabra.indexOf(letra) != -1) {
     for(var i=0; i<palabra.length; i++) {
       if(palabra[i]==letra) oculta[i] = letra;
     }
     hueco.innerHTML = oculta.join("");
+    document.getElementById("acierto").innerHTML = "Bien!";
+    document.getElementById("acierto").className += "acierto verde";
   }else{
     cont--;
     document.getElementById("intentos").innerHTML = cont;
+    document.getElementById("acierto").innerHTML = "Fallo!";
+    document.getElementById("acierto").className += "acierto rojo";
+    document.getElementById("image"+cont).className += "fade-in";
   }
   compruebaFin();
+  setTimeout(function () { 
+    document.getElementById("acierto").className = ""; 
+  }, 800);
+}
+
+// Obtener pista
+function pista() {
+  document.getElementById("hueco-pista").innerHTML = palabras[rand][1];
 }
 
 // Compruba si ha finalizado
 function compruebaFin() {
   if( oculta.indexOf("_") == -1 ) {
-    document.getElementById("turnos").querySelector("h3").innerHTML = "FELICIDADES !!";
+    document.getElementById("msg-final").innerHTML = "Felicidades !!";
+    document.getElementById("msg-final").className += "zoom-in";
+    document.getElementById("palabra").className += " encuadre";
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].disabled = true;
     }
     document.getElementById("reset").innerHTML = "Empezar";
     btnInicio.onclick = function() { location.reload() };
   }else if( cont == 0 ) {
-    document.getElementById("turnos").querySelector("h3").innerHTML = "GAME OVER :(";
+    document.getElementById("msg-final").innerHTML = "Game Over";
+    document.getElementById("msg-final").className += "zoom-in";
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].disabled = true;
     }

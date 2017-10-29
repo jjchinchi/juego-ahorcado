@@ -7,9 +7,40 @@
   margin: auto;
 }
 h1.titulo {
-  margin: 50px auto 50px auto;
+  margin: 50px auto 0 auto;
   text-align: center;
   
+}
+h1#msg-final {
+  text-align: center;
+  color: crimson;
+  transition: all .5s ease;
+  transform: scale(0);
+  min-height: 50px;
+  margin-bottom: 0;
+}
+.zoom-in {
+  transform: scale(1) !important;
+}
+#acierto {
+  text-align: center;
+  min-height: 24px;
+  transform: scale(0);
+}
+.acierto {
+  animation: zoomInOut 1s ease;
+}
+.rojo {
+  color: red;
+}
+.verde {
+  color: green;
+}
+@keyframes zoomInOut {
+  0% { transform: scale(0); }
+  50% { transform: scale(1); }
+  70% { transform: scale(1); }
+  100% { transform: scale(0); }
 }
 h2.palabra {
   margin: 0 auto 25px auto;
@@ -24,13 +55,43 @@ h2.palabra {
   flex-wrap: wrap;
   margin: 10px auto; 
 }
+.no-wrap {
+  flex-wrap: nowrap !important;
+}
 .col {
   width: 50%;
   text-align: center;
+}
+.col span {
+  
 }
 #turnos h3 {
   margin: auto;
 }
 h3 span {
    color: orangered;
+}
+.letra:disabled {
+  color:rgba(255, 0, 0, 0.5);
+}
+picture {
+  position: relative;
+}
+picture img {
+  position: absolute;
+  top: -139px;
+  left: -205px;
+  height: 175px;
+}
+#image5, #image4, #image3,
+#image2, #image1, #image0 {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.fade-in {
+  opacity: 1 !important;
+}
+.encuadre {
+  border: 2px dashed crimson;
+  padding: 3px 2px 2px 6px;
 }
