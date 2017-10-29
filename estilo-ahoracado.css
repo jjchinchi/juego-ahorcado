@@ -1,0 +1,36 @@
+
+* {
+  box-sizing: border-box;
+}
+.main-container {
+  max-width: 800px;
+  margin: auto;
+}
+h1.titulo {
+  margin: 50px auto 50px auto;
+  text-align: center;
+  
+}
+h2.palabra {
+  margin: 0 auto 25px auto;
+  text-align: center;
+  color: royalblue;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+.flex-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px auto; 
+}
+.col {
+  width: 50%;
+  text-align: center;
+}
+#turnos h3 {
+  margin: auto;
+}
+h3 span {
+   color: orangered;
+}

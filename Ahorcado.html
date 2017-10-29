@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Ud.2 - Relacion de ejercicios 5</title>
+    <link rel="stylesheet" href="estilo-ahoracado.css">
+  </head>
+  <body>
+      <div class="main-container">
+
+        <h1 class="titulo">Juego del ahorcado</h1>
+        <h2 class="palabra" id="palabra"></h2>
+        <div class="flex-row" id="turnos">
+          <div class="col">
+            <h3>Intentos restantes: <span id="intentos">6</span></h3>
+          </div>
+          <div class="col">
+            <button onclick="inicio()" id="reset">Elegir otra palabra</button>
+          </div>
+          </div>
+        
+        <div class="flex-row">
+          <div class="col">
+            <div class="flex-row" id="abcdario">
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+
+      </div>
+    <script src="ahorcado.js"></script>
+  </body>
+</html>
