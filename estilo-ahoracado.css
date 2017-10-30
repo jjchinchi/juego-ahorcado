@@ -7,9 +7,9 @@
   margin: auto;
 }
 h1.titulo {
-  margin: 50px auto 0 auto;
+  margin: 50px auto 80px auto;
   text-align: center;
-  
+  font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 }
 h1#msg-final {
   text-align: center;
@@ -79,9 +79,9 @@ picture {
 }
 picture img {
   position: absolute;
-  top: -139px;
+  top: -203px;
   left: -205px;
-  height: 175px;
+  height: 225px;
 }
 #image5, #image4, #image3,
 #image2, #image1, #image0 {
